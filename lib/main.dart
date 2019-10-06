@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'todo_list.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'todo_list_screen.dart';
 
 void main() => runApp(TodoApp());
 
@@ -37,7 +38,14 @@ class _TodoListState extends State<TodoList> {
 	@override
 	Widget build(BuildContext context) {
 		return MaterialApp(
-			home: TodoItems(),
+			home: TodoItemsScreen(),
+			localizationsDelegates: [
+				GlobalMaterialLocalizations.delegate,
+				GlobalWidgetsLocalizations.delegate,
+			],
+			supportedLocales: [
+				Locale('ja', ''),
+			],
 		);
 	}
 }
