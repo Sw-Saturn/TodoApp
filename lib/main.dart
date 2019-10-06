@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-import 'prefs.dart';
+import 'todo_list.dart';
 
 void main() => runApp(TodoApp());
 
@@ -17,7 +16,6 @@ class TodoApp extends StatelessWidget {
   }
 }
 
-
 class TodoList extends StatefulWidget {
   TodoList({Key key}) : super(key: key);
 
@@ -26,19 +24,8 @@ class TodoList extends StatefulWidget {
 }
 
 class _TodoListState extends State<TodoList> {
-	List<String> todoItems = [];
-	List<String> completedItems = [];
-
-	void _init() async {
-		await ControlSharedPrefs.setInstance();
-		todoItems = ControlSharedPrefs.getTodoItems();
-		completedItems = ControlSharedPrefs.getCompletedItems();
-		setState(() {});
-	}
-
 	@override
 	void initState() {
-		_init();
 		super.initState();
 	}
 
@@ -49,10 +36,8 @@ class _TodoListState extends State<TodoList> {
 
 	@override
 	Widget build(BuildContext context) {
-		return Scaffold(
-			appBar: AppBar(
-				title: Text("TodoList")
-			)
+		return MaterialApp(
+			home: TodoItems(),
 		);
 	}
 }
